@@ -3,7 +3,6 @@ from torch import nn
 from torchsummary import summary
 # [B, in_channels, W, H] -> [B, out_channels, W/2, H/2]
 
-
 class block(nn.Module):
     def __init__(self, in_channels, out_channels, identity_downsample=None, stride=1):
         super(block, self).__init__()
