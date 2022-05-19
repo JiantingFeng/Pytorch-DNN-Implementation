@@ -169,13 +169,13 @@ class ViT(nn.Module):
             [AttentionBlock(embed_dim, heads, p) for _ in range(num_layers)]
         )
 
-        self.classifier = nn.Linear((CONFIG.IMG_SHAPE // 16) ** 2 + 1)
+        self.classifier = nn.Linear((CONFIG.IMG_SHAPE // 16) ** 2 + 1, 1000)
 
     def forward(self, x):
         x = self.preprocess(x)
         x = self.backbone(x)
         x = self.classifier(x)
-        return x[0]
+        return x
 
 
 if __name__ == "__main__":
